@@ -1,0 +1,46 @@
+extends layout.pug
+
+block content
+  if user
+    .chat-block
+      .chat-info Всего онлайн 
+        span.total-online=totalUsers
+      .chat-messages
+        each message in messages
+          .message-item
+            .username!=message.author
+            .text #{message.text}
+            .date!=message.created.getHours()+":"+(message.created.getMinutes()<10?'0':'') + message.created.getMinutes()
+      .chat-control
+        form#messageForm
+          input.chat-input.form-control(placeholder="Ваше сообщение")
+          button#sendMessage.btn.btn-primary(type="submit" data-user=user) Отправить
+  else
+    .auth-form
+      ul#myTab.nav.nav-tabs(role='tablist')
+        li.nav-item
+          a#home-tab.nav-link.active(data-toggle='tab', href='#login', role='tab', aria-controls='login', aria-selected='true') Логин
+        li.nav-item
+          a#profile-tab.nav-link(data-toggle='tab', href='#reg', role='tab', aria-controls='reg', aria-selected='false') Регистрация
+      #myTabContent.tab-content
+        #login.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='login-tab')
+          form#loginForm(method="POST", action="/login")
+            .form-group
+              p.status-line 
+            .form-group
+              input.form-control(name="username" placeholder="Логин")
+            .form-group
+              input.form-control(name="password" placeholder="Пароль", type="password")
+            .form-group
+              button.btn.btn-primary(type="submit") Войти
+
+        #reg.tab-pane.fade(role='tabpanel', aria-labelledby='reg-tab')
+          form#regForm(method="POST", action="/register")
+            .form-group
+              p.status-line 
+            .form-group
+              input.form-control(name="login" placeholder="Логин")
+            .form-group
+              input.form-control(name="password" placeholder="Пароль", type="password")
+            .form-group
+              button.btn.btn-primary(type="submit") Регистрация

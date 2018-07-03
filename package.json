@@ -1,0 +1,30 @@
+{
+  "name": "ryskodesk",
+  "version": "0.0.1",
+  "description": "Built in FRUTINI agency app for task control",
+  "main": "app.js",
+  "scripts": {
+    "start": " nodemon app.js"
+  },
+  "author": "localhostech",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "intl": "^1.2.5",
+    "intl-locales-supported": "^1.0.0",
+    "moment": "^2.22.2",
+    "mongo": "^0.1.0",
+    "mongoose": "^4.11.6",
+    "mongoose-session": "0.0.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.1.0",
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.1"
+  }
+}
